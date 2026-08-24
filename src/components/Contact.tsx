@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Card } from '@/components/ui/card';
 
 const bgImage =
   'https://images.pexels.com/photos/8082328/pexels-photo-8082328.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400';
@@ -14,7 +19,6 @@ export function Contact() {
           <div className="absolute inset-0 bg-ink-950/85" />
 
           <div className="relative grid lg:grid-cols-2 gap-12 p-8 sm:p-14 lg:p-20">
-            {/* Left */}
             <div className="text-white">
               <Reveal>
                 <span className="text-sm font-semibold uppercase tracking-widest text-gold-400">Get in touch</span>
@@ -50,34 +54,29 @@ export function Contact() {
               </Reveal>
             </div>
 
-            {/* Right - form */}
             <Reveal delay={0.2}>
-              <motion.form
-                onSubmit={(e) => e.preventDefault()}
-                className="glass rounded-3xl p-6 sm:p-8"
-              >
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Field label="Full name" placeholder="Jane Doe" />
-                  <Field label="Email" placeholder="jane@email.com" type="email" />
-                </div>
-                <div className="mt-4">
-                  <Field label="Phone" placeholder="+1 (555) 000-0000" type="tel" />
-                </div>
-                <div className="mt-4">
-                  <label className="text-sm font-semibold text-ink-700">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Tell us what you're looking for..."
-                    className="mt-2 w-full rounded-2xl border border-ink-200 bg-white/80 px-4 py-3 text-sm text-ink-800 placeholder:text-ink-400 outline-none transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-6 w-full flex items-center justify-center gap-2 rounded-2xl bg-ink-950 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-ink-800 hover:shadow-xl hover:shadow-ink-950/20 hover:-translate-y-0.5"
-                >
-                  Send message
-                  <Send className="h-4 w-4" />
-                </button>
+              <motion.form onSubmit={(e) => e.preventDefault()}>
+                <Card className="glass rounded-3xl p-6 sm:p-8 border-0">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <FormField label="Full name" placeholder="Jane Doe" />
+                    <FormField label="Email" placeholder="jane@email.com" type="email" />
+                  </div>
+                  <div className="mt-4">
+                    <FormField label="Phone" placeholder="+1 (555) 000-0000" type="tel" />
+                  </div>
+                  <div className="mt-4">
+                    <Label>Message</Label>
+                    <Textarea
+                      rows={4}
+                      placeholder="Tell us what you're looking for..."
+                      className="mt-2"
+                    />
+                  </div>
+                  <Button type="submit" variant="default" size="lg" className="mt-6 w-full rounded-2xl">
+                    Send message
+                    <Send className="h-4 w-4" />
+                  </Button>
+                </Card>
               </motion.form>
             </Reveal>
           </div>
@@ -87,15 +86,13 @@ export function Contact() {
   );
 }
 
-function Field({ label, placeholder, type = 'text' }: { label: string; placeholder: string; type?: string }) {
+function FormField({ label, placeholder, type = 'text' }: { label: string; placeholder: string; type?: string }) {
   return (
     <div>
-      <label className="text-sm font-semibold text-ink-700">{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-ink-200 bg-white/80 px-4 py-3 text-sm text-ink-800 placeholder:text-ink-400 outline-none transition-all focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20"
-      />
+      <Label>{label}</Label>
+      <div className="mt-2 w-full rounded-2xl border border-ink-200 bg-white/80 px-4 py-3 transition-all focus-within:border-gold-400 focus-within:ring-2 focus-within:ring-gold-400/20">
+        <Input type={type} placeholder={placeholder} />
+      </div>
     </div>
   );
 }

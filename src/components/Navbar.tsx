@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Building2 } from 'lucide-react';
+import { Menu, Building2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Separator } from '@/components/ui/separator';
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -12,7 +15,6 @@ const links = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -56,54 +58,42 @@ export function Navbar() {
           <a href="#contact" className={`text-sm font-semibold transition-colors ${scrolled ? 'text-ink-700 hover:text-ink-950' : 'text-white/90 hover:text-white'}`}>
             Sign in
           </a>
-          <a
-            href="#contact"
-            className="rounded-full bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-ink-800 hover:shadow-lg hover:shadow-ink-950/20 hover:-translate-y-0.5"
-          >
-            Book a visit
-          </a>
+          <Button asChild variant="default" size="default">
+            <a href="#contact">Book a visit</a>
+          </Button>
         </div>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl bg-ink-950 text-white"
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </nav>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden glass mx-5 mt-3 rounded-2xl"
-          >
-            <div className="flex flex-col p-4 gap-1">
+        <Sheet>
+          <SheetTrigger asChild>
+            <button
+              className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl bg-ink-950 text-white"
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-80">
+            <div className="flex flex-col p-6 pt-16 gap-1">
               {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-xl px-4 py-3 text-sm font-medium text-ink-700 hover:bg-ink-100 transition-colors"
-                >
-                  {l.label}
-                </a>
+                <SheetClose asChild key={l.href}>
+                  <a
+                    href={l.href}
+                    className="rounded-xl px-4 py-3 text-sm font-medium text-ink-700 hover:bg-ink-100 transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                </SheetClose>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-xl bg-ink-950 px-4 py-3 text-center text-sm font-semibold text-white"
-              >
-                Book a visit
-              </a>
+              <Separator className="my-3" />
+              <SheetClose asChild>
+                <Button asChild variant="default" className="w-full">
+                  <a href="#contact">Book a visit</a>
+                </Button>
+              </SheetClose>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </SheetContent>
+        </Sheet>
+      </nav>
     </motion.header>
   );
 }

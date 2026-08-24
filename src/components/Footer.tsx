@@ -1,4 +1,5 @@
 import { Building2, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 const sections = [
   {
@@ -20,7 +21,6 @@ export function Footer() {
     <footer className="bg-ink-950 text-white pt-20 pb-8 px-5 sm:px-8">
       <div className="mx-auto max-w-8xl">
         <div className="grid lg:grid-cols-5 gap-10">
-          {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-2.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold-400 text-ink-950">
@@ -48,7 +48,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           {sections.map((s) => (
             <div key={s.title}>
               <h4 className="font-semibold text-white">{s.title}</h4>
@@ -65,7 +64,8 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 border-t border-ink-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <Separator className="mt-14 bg-ink-800" />
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-ink-300">
             &copy; {new Date().getFullYear()} LeonHome. All rights reserved.
           </p>

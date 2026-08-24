@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { categories } from '@/data/properties';
 import { Reveal } from './Reveal';
+import { Card } from '@/components/ui/card';
 
 export function Categories() {
   return (
@@ -24,36 +25,38 @@ export function Categories() {
 
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
-            <motion.a
+            <motion.div
               key={cat.id}
-              href="#properties"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative h-80 overflow-hidden rounded-3xl"
             >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent" />
+              <Card className="group relative h-80 overflow-hidden border-0">
+                <a href="#properties" className="block h-full">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent" />
 
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <div className="flex items-end justify-between">
-                  <div>
-                    <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
-                    <p className="mt-1 text-sm text-ink-200">{cat.count} properties</p>
+                  <div className="absolute inset-0 flex flex-col justify-end p-6">
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
+                        <p className="mt-1 text-sm text-ink-200">{cat.count} properties</p>
+                      </div>
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all duration-300 group-hover:bg-gold-400 group-hover:text-ink-950">
+                        <ArrowUpRight className="h-5 w-5 transition-transform group-hover:rotate-45" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all duration-300 group-hover:bg-gold-400 group-hover:text-ink-950">
-                    <ArrowUpRight className="h-5 w-5 transition-transform group-hover:rotate-45" />
-                  </div>
-                </div>
-              </div>
 
-              <div className="absolute inset-0 ring-2 ring-transparent rounded-3xl transition-all duration-300 group-hover:ring-gold-400/50" />
-            </motion.a>
+                  <div className="absolute inset-0 ring-2 ring-transparent rounded-3xl transition-all duration-300 group-hover:ring-gold-400/50" />
+                </a>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

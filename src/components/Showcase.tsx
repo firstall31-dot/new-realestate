@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { interiors } from '@/data/properties';
 import { Reveal } from './Reveal';
+import { Card } from '@/components/ui/card';
 
 export function Showcase() {
   return (
@@ -29,7 +30,7 @@ export function Showcase() {
                 i === 0 ? 'col-span-2 lg:row-span-2 lg:col-span-2' : ''
               }`}
             >
-              <div className={`relative overflow-hidden rounded-3xl ${i === 0 ? 'h-full min-h-[24rem]' : 'h-56 sm:h-64'}`}>
+              <Card className={`relative overflow-hidden rounded-3xl border-0 ${i === 0 ? 'h-full min-h-[24rem]' : 'h-56 sm:h-64'}`}>
                 <img
                   src={item.image}
                   alt={item.title}
@@ -44,7 +45,7 @@ export function Showcase() {
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
-              </div>
+              </Card>
             </motion.div>
           ))}
         </div>

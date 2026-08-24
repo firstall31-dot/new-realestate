@@ -1,5 +1,17 @@
 import { motion } from 'framer-motion';
 import { Search, MapPin, Home, DollarSign, Star, ArrowRight, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const heroImage =
   'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400';
@@ -7,7 +19,6 @@ const heroImage =
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-ink-950 pt-28 pb-20">
-      {/* Background image */}
       <div className="absolute inset-0">
         <motion.img
           src={heroImage}
@@ -22,7 +33,6 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-8xl px-5 sm:px-8 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-7rem)]">
-        {/* Left content */}
         <div className="lg:col-span-7 text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -57,7 +67,6 @@ export function Hero() {
             finest neighborhoods.
           </motion.p>
 
-          {/* Search bar */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,39 +75,42 @@ export function Hero() {
           >
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
               <MapPin className="h-5 w-5 text-ink-500 shrink-0" />
-              <input
-                type="text"
-                placeholder="Location e.g. Beverly Hills"
-                className="w-full bg-transparent text-sm font-medium text-ink-800 placeholder:text-ink-500 outline-none"
-              />
+              <Input type="text" placeholder="Location e.g. Beverly Hills" />
             </div>
-            <div className="hidden sm:block w-px bg-ink-200" />
+            <Separator orientation="vertical" className="hidden sm:block h-auto" />
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
               <Home className="h-5 w-5 text-ink-500 shrink-0" />
-              <select className="w-full bg-transparent text-sm font-medium text-ink-800 outline-none cursor-pointer">
-                <option>Any type</option>
-                <option>Villa</option>
-                <option>Apartment</option>
-                <option>Family Home</option>
-              </select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Any type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="villa">Villa</SelectItem>
+                  <SelectItem value="apartment">Apartment</SelectItem>
+                  <SelectItem value="family">Family Home</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <div className="hidden sm:block w-px bg-ink-200" />
+            <Separator orientation="vertical" className="hidden sm:block h-auto" />
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
               <DollarSign className="h-5 w-5 text-ink-500 shrink-0" />
-              <select className="w-full bg-transparent text-sm font-medium text-ink-800 outline-none cursor-pointer">
-                <option>Any price</option>
-                <option>$1M - $2M</option>
-                <option>$2M - $4M</option>
-                <option>$4M+</option>
-              </select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Any price" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1-2">$1M - $2M</SelectItem>
+                  <SelectItem value="2-4">$2M - $4M</SelectItem>
+                  <SelectItem value="4+">$4M+</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <button className="flex items-center justify-center gap-2 rounded-xl bg-gold-400 px-6 py-3 text-sm font-bold text-ink-950 transition-all hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/30">
+            <Button variant="gold" size="default" className="rounded-xl">
               <Search className="h-4 w-4" />
               Search
-            </button>
+            </Button>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +130,6 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right floating card */}
         <div className="lg:col-span-5 hidden lg:block">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
@@ -127,16 +138,14 @@ export function Hero() {
             className="relative ml-auto max-w-sm"
           >
             <div className="animate-float">
-              <div className="glass rounded-3xl p-5 shadow-2xl">
+              <Card className="glass rounded-3xl p-5 shadow-2xl border-0">
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
                     src="https://images.pexels.com/photos/8134821/pexels-photo-8134821.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
                     alt="Featured property"
                     className="h-56 w-full object-cover"
                   />
-                  <div className="absolute top-3 left-3 rounded-full bg-gold-400 px-3 py-1 text-xs font-bold text-ink-950">
-                    Featured
-                  </div>
+                  <Badge variant="gold" className="absolute top-3 left-3">Featured</Badge>
                   <button className="absolute inset-0 m-auto flex h-14 w-14 items-center justify-center rounded-full glass text-ink-950 transition-transform hover:scale-110">
                     <Play className="h-5 w-5 ml-0.5" fill="currentColor" />
                   </button>
@@ -151,13 +160,12 @@ export function Hero() {
                   <p className="text-sm text-ink-500">Beverly Hills, CA</p>
                   <div className="mt-3 flex items-center justify-between">
                     <span className="font-serif text-xl font-semibold text-ink-950">$4,250,000</span>
-                    <span className="text-xs font-semibold text-sage-600 bg-sage-100 px-3 py-1 rounded-full">For Sale</span>
+                    <Badge variant="sage">For Sale</Badge>
                   </div>
                 </div>
-              </div>
+              </Card>
             </div>
 
-            {/* Floating badge */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -178,7 +186,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

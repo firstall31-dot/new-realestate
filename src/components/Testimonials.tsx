@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { testimonials } from '@/data/properties';
 import { Reveal } from './Reveal';
+import { Button } from '@/components/ui/button';
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
@@ -61,15 +62,16 @@ export function Testimonials() {
             </AnimatePresence>
           </div>
 
-          {/* Controls */}
           <div className="mt-10 flex items-center justify-center gap-4">
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => go(-1)}
-              className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all hover:bg-gold-400 hover:text-ink-950"
+              className="glass-dark text-white hover:bg-gold-400 hover:text-ink-950"
               aria-label="Previous"
             >
               <ChevronLeft className="h-5 w-5" />
-            </button>
+            </Button>
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
                 <button
@@ -85,13 +87,15 @@ export function Testimonials() {
                 />
               ))}
             </div>
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => go(1)}
-              className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all hover:bg-gold-400 hover:text-ink-950"
+              className="glass-dark text-white hover:bg-gold-400 hover:text-ink-950"
               aria-label="Next"
             >
               <ChevronRight className="h-5 w-5" />
-            </button>
+            </Button>
           </div>
         </div>
       </div>

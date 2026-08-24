@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Home, Users, Award, TrendingUp } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 const stats = [
   { icon: Home, value: 2500, suffix: '+', label: 'Properties Sold' },
@@ -73,11 +74,11 @@ export function Stats() {
   return (
     <section ref={ref} className="relative -mt-16 z-10 px-5 sm:px-8">
       <div className="mx-auto max-w-8xl">
-        <div className="glass rounded-3xl shadow-2xl p-8 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="glass rounded-3xl shadow-2xl p-8 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-6 border-0">
           {stats.map((s, i) => (
             <StatCard key={s.label} {...s} start={inView} delay={i * 0.1} />
           ))}
-        </div>
+        </Card>
       </div>
     </section>
   );

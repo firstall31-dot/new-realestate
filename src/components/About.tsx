@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Quote } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 const features = [
   'Personalized property matching',
@@ -16,7 +18,6 @@ export function About() {
   return (
     <section id="about" className="py-24 sm:py-32 px-5 sm:px-8">
       <div className="mx-auto max-w-8xl grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        {/* Image side */}
         <Reveal>
           <div className="relative">
             <div className="relative overflow-hidden rounded-[2rem] shadow-2xl">
@@ -28,32 +29,33 @@ export function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent" />
             </div>
 
-            {/* Experience badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="absolute -bottom-6 -right-4 sm:-right-8 glass rounded-3xl p-6 shadow-xl max-w-[14rem]"
+              className="absolute -bottom-6 -right-4 sm:-right-8"
             >
-              <div className="font-serif text-4xl font-semibold text-ink-950">15+</div>
-              <div className="mt-1 text-sm text-ink-600">Years of experience in premium real estate</div>
+              <Card className="glass rounded-3xl p-6 shadow-xl border-0 max-w-[14rem]">
+                <div className="font-serif text-4xl font-semibold text-ink-950">15+</div>
+                <div className="mt-1 text-sm text-ink-600">Years of experience in premium real estate</div>
+              </Card>
             </motion.div>
 
-            {/* Quote bubble */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="absolute -top-4 -left-4 sm:-left-8 glass rounded-2xl p-4 shadow-xl"
+              className="absolute -top-4 -left-4 sm:-left-8"
             >
-              <Quote className="h-6 w-6 text-gold-400" fill="currentColor" />
+              <Card className="glass rounded-2xl p-4 shadow-xl border-0">
+                <Quote className="h-6 w-6 text-gold-400" fill="currentColor" />
+              </Card>
             </motion.div>
           </div>
         </Reveal>
 
-        {/* Content side */}
         <div>
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-widest text-gold-600">Why choose us</span>
@@ -82,13 +84,12 @@ export function About() {
 
           <Reveal delay={0.25}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-ink-950 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-ink-800 hover:shadow-xl hover:shadow-ink-950/20 hover:-translate-y-0.5"
-              >
-                Schedule a consultation
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <Button asChild variant="default" size="lg">
+                <a href="#contact">
+                  Schedule a consultation
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
               <a
                 href="#properties"
                 className="text-sm font-semibold text-ink-700 hover:text-gold-600 transition-colors"
