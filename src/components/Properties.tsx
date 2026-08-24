@@ -87,19 +87,19 @@ export function Properties() {
 
                     <div className="mt-4 flex items-center gap-5 text-sm text-ink-600">
                       <span className="flex items-center gap-1.5">
-                        <Bed className="h-4 w-4 text-ink-400" /> {p.beds} Beds
+                        <Bed className="h-4 w-4 text-ink-500" /> {p.beds} Beds
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Bath className="h-4 w-4 text-ink-400" /> {p.baths} Baths
+                        <Bath className="h-4 w-4 text-ink-500" /> {p.baths} Baths
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Maximize className="h-4 w-4 text-ink-400" /> {p.area}
+                        <Maximize className="h-4 w-4 text-ink-500" /> {p.area}
                       </span>
                     </div>
 
                     <div className="mt-5 flex items-center justify-between border-t border-ink-100 pt-4">
                       <div>
-                        <span className="text-xs text-ink-400">Price</span>
+                        <span className="text-xs font-medium text-ink-500">Price</span>
                         <div className="font-serif text-xl font-semibold text-ink-950">{p.price}</div>
                       </div>
                       <button className="rounded-full bg-ink-100 px-5 py-2.5 text-sm font-semibold text-ink-700 transition-all hover:bg-ink-950 hover:text-white">

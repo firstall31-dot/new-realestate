@@ -46,7 +46,7 @@ export function Categories() {
                     <h3 className="font-serif text-2xl font-semibold text-white">{cat.name}</h3>
                     <p className="mt-1 text-sm text-ink-200">{cat.count} properties</p>
                   </div>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full glass text-white transition-all duration-300 group-hover:bg-gold-400 group-hover:text-ink-950">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all duration-300 group-hover:bg-gold-400 group-hover:text-ink-950">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:rotate-45" />
                   </div>
                 </div>

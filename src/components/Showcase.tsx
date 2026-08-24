@@ -40,7 +40,7 @@ export function Showcase() {
                   <h3 className={`font-serif font-semibold text-white ${i === 0 ? 'text-2xl' : 'text-lg'}`}>
                     {item.title}
                   </h3>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full glass text-white opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-gold-400 group-hover:text-ink-950">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full glass-dark text-white opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-gold-400 group-hover:text-ink-950">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>

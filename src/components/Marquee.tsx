@@ -18,7 +18,7 @@ export function Marquee() {
           {[...partners, ...partners].map((p, i) => (
             <motion.div
               key={i}
-              className="flex items-center gap-2.5 text-ink-400"
+              className="flex items-center gap-2.5 text-ink-600"
               whileHover={{ scale: 1.05, color: '#43495d' }}
             >
               <p.icon className="h-5 w-5" />

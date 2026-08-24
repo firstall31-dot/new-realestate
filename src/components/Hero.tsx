@@ -65,16 +65,16 @@ export function Hero() {
             className="mt-8 glass rounded-2xl p-2 flex flex-col sm:flex-row gap-2 max-w-2xl"
           >
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
-              <MapPin className="h-5 w-5 text-ink-400 shrink-0" />
+              <MapPin className="h-5 w-5 text-ink-500 shrink-0" />
               <input
                 type="text"
                 placeholder="Location e.g. Beverly Hills"
-                className="w-full bg-transparent text-sm font-medium text-ink-800 placeholder:text-ink-400 outline-none"
+                className="w-full bg-transparent text-sm font-medium text-ink-800 placeholder:text-ink-500 outline-none"
               />
             </div>
             <div className="hidden sm:block w-px bg-ink-200" />
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
-              <Home className="h-5 w-5 text-ink-400 shrink-0" />
+              <Home className="h-5 w-5 text-ink-500 shrink-0" />
               <select className="w-full bg-transparent text-sm font-medium text-ink-800 outline-none cursor-pointer">
                 <option>Any type</option>
                 <option>Villa</option>
@@ -84,7 +84,7 @@ export function Hero() {
             </div>
             <div className="hidden sm:block w-px bg-ink-200" />
             <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
-              <DollarSign className="h-5 w-5 text-ink-400 shrink-0" />
+              <DollarSign className="h-5 w-5 text-ink-500 shrink-0" />
               <select className="w-full bg-transparent text-sm font-medium text-ink-800 outline-none cursor-pointer">
                 <option>Any price</option>
                 <option>$1M - $2M</option>

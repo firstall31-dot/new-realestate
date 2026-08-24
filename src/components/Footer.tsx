@@ -30,7 +30,7 @@ export function Footer() {
                 Leon<span className="text-gold-400">Home</span>
               </span>
             </a>
-            <p className="mt-5 text-sm text-ink-400 leading-relaxed max-w-sm">
+            <p className="mt-5 text-sm text-ink-300 leading-relaxed max-w-sm">
               Your trusted partner in finding premium real estate. We combine
               expertise with elegance to help you discover the perfect home.
             </p>
@@ -55,7 +55,7 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {s.links.map((l) => (
                   <li key={l}>
-                    <a href="#" className="text-sm text-ink-400 transition-colors hover:text-gold-400">
+                    <a href="#" className="text-sm text-ink-300 transition-colors hover:text-gold-400">
                       {l}
                     </a>
                   </li>
@@ -66,10 +66,10 @@ export function Footer() {
         </div>
 
         <div className="mt-14 border-t border-ink-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-ink-500">
+          <p className="text-xs text-ink-300">
             &copy; {new Date().getFullYear()} LeonHome. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-ink-500">
+          <div className="flex gap-6 text-xs text-ink-300">
             <a href="#" className="hover:text-gold-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gold-400 transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-gold-400 transition-colors">Cookies</a>

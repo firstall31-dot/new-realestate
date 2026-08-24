@@ -34,8 +34,8 @@ export function Navbar() {
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-950 text-gold-400 transition-transform group-hover:scale-105">
             <Building2 className="h-5 w-5" />
           </div>
-          <span className="font-serif text-xl font-semibold tracking-tight text-ink-950">
-            Leon<span className="text-gold-500">Home</span>
+          <span className={`font-serif text-xl font-semibold tracking-tight transition-colors ${scrolled ? 'text-ink-950' : 'text-white'}`}>
+            Leon<span className="text-gold-400">Home</span>
           </span>
         </a>
 
@@ -44,7 +44,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="relative px-4 py-2 text-sm font-medium text-ink-600 transition-colors hover:text-ink-950 group"
+              className={`relative px-4 py-2 text-sm font-medium transition-colors group ${scrolled ? 'text-ink-700 hover:text-ink-950' : 'text-white/85 hover:text-white'}`}
             >
               {l.label}
               <span className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-gold-400 transition-all duration-300 group-hover:w-6" />
@@ -53,7 +53,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="#contact" className="text-sm font-semibold text-ink-700 hover:text-ink-950 transition-colors">
+          <a href="#contact" className={`text-sm font-semibold transition-colors ${scrolled ? 'text-ink-700 hover:text-ink-950' : 'text-white/90 hover:text-white'}`}>
             Sign in
           </a>
           <a

@@ -41,7 +41,7 @@ export function Contact() {
                         <c.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="text-xs uppercase tracking-wider text-ink-400">{c.label}</div>
+                        <div className="text-xs uppercase tracking-wider text-ink-200">{c.label}</div>
                         <div className="font-semibold text-white">{c.value}</div>
                       </div>
                     </div>
