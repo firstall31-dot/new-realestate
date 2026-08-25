@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, Building2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Menu, Code2, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
+import { profile } from '@/data/portfolio';
 
 const links = [
   { label: 'Home', href: '#home' },
-  { label: 'Properties', href: '#properties' },
-  { label: 'Categories', href: '#categories' },
-  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Reviews', href: '#reviews' },
 ];
 
@@ -34,10 +35,10 @@ export function Navbar() {
       <nav className="mx-auto max-w-8xl px-5 sm:px-8 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2.5 group">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-950 text-gold-400 transition-transform group-hover:scale-105">
-            <Building2 className="h-5 w-5" />
+            <Code2 className="h-5 w-5" />
           </div>
           <span className={`font-serif text-xl font-semibold tracking-tight transition-colors ${scrolled ? 'text-ink-950' : 'text-white'}`}>
-            Leon<span className="text-gold-400">Home</span>
+            Mostafa<span className="text-gold-400">.dev</span>
           </span>
         </a>
 
@@ -55,11 +56,29 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="#contact" className={`text-sm font-semibold transition-colors ${scrolled ? 'text-ink-700 hover:text-ink-950' : 'text-white/90 hover:text-white'}`}>
-            Sign in
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${scrolled ? 'text-ink-700 hover:bg-ink-100' : 'text-white/85 hover:bg-white/10'}`}
+            aria-label="GitHub"
+          >
+            <Github className="h-4 w-4" />
           </a>
-          <Button asChild variant="default" size="default">
-            <a href="#contact">Book a visit</a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${scrolled ? 'text-ink-700 hover:bg-ink-100' : 'text-white/85 hover:bg-white/10'}`}
+            aria-label="LinkedIn"
+          >
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <Button asChild variant="gold" size="default">
+            <a href="#contact">
+              <Mail className="h-4 w-4" />
+              Get in touch
+            </a>
           </Button>
         </div>
 
@@ -85,9 +104,20 @@ export function Navbar() {
                 </SheetClose>
               ))}
               <Separator className="my-3" />
+              <div className="flex gap-3 px-4">
+                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-100 text-ink-700">
+                  <Github className="h-4 w-4" />
+                </a>
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-100 text-ink-700">
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a href={`mailto:${profile.email}`} className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-100 text-ink-700">
+                  <Mail className="h-4 w-4" />
+                </a>
+              </div>
               <SheetClose asChild>
-                <Button asChild variant="default" className="w-full">
-                  <a href="#contact">Book a visit</a>
+                <Button asChild variant="default" className="w-full mt-3">
+                  <a href="#contact">Get in touch</a>
                 </Button>
               </SheetClose>
             </div>

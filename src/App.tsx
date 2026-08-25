@@ -2,9 +2,9 @@ import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { Stats } from '@/components/Stats';
 import { Marquee } from '@/components/Marquee';
-import { Properties } from '@/components/Properties';
-import { Categories } from '@/components/Categories';
-import { About } from '@/components/About';
+import { Projects } from '@/components/Projects';
+import { Skills } from '@/components/Skills';
+import { Experience } from '@/components/Experience';
 import { Showcase } from '@/components/Showcase';
 import { Testimonials } from '@/components/Testimonials';
 import { Contact } from '@/components/Contact';
@@ -18,9 +18,9 @@ function App() {
         <Hero />
         <Stats />
         <Marquee />
-        <Properties />
-        <Categories />
-        <About />
+        <Projects />
+        <Skills />
+        <Experience />
         <Showcase />
         <Testimonials />
         <Contact />

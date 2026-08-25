@@ -1,20 +1,12 @@
 import { motion } from 'framer-motion';
-import { Search, MapPin, Home, DollarSign, Star, ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Sparkles, Cpu, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { profile } from '@/data/portfolio';
 
 const heroImage =
-  'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400';
+  'https://images.pexels.com/photos/6424583/pexels-photo-6424583.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400';
 
 export function Hero() {
   return (
@@ -22,13 +14,13 @@ export function Hero() {
       <div className="absolute inset-0">
         <motion.img
           src={heroImage}
-          alt="Luxury home"
+          alt="Code on screen"
           className="h-full w-full object-cover"
           initial={{ scale: 1.15 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/90 via-ink-950/60 to-ink-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/70 to-ink-950/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/40" />
       </div>
 
@@ -41,7 +33,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full glass-dark px-4 py-2 text-xs font-semibold tracking-wide text-gold-200"
           >
             <span className="flex h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
-            #1 PREMIUM REAL ESTATE AGENCY
+            AVAILABLE FOR NEW PROJECTS
           </motion.div>
 
           <motion.h1
@@ -50,10 +42,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight text-balance"
           >
-            Find the place
+            {profile.name}
             <br />
-            you'll love to
-            <span className="text-gold-400"> call home.</span>
+            <span className="text-gold-400">{profile.title}</span>
           </motion.h1>
 
           <motion.p
@@ -62,53 +53,47 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="mt-6 max-w-xl text-lg text-ink-200 leading-relaxed"
           >
-            Explore a curated collection of luxury villas, modern apartments, and
-            family residences — handpicked by our experts across the country's
-            finest neighborhoods.
+            {profile.summary}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.65 }}
-            className="mt-8 glass rounded-2xl p-2 flex flex-col sm:flex-row gap-2 max-w-2xl"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
-            <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
-              <MapPin className="h-5 w-5 text-ink-500 shrink-0" />
-              <Input type="text" placeholder="Location e.g. Beverly Hills" />
-            </div>
-            <Separator orientation="vertical" className="hidden sm:block h-auto" />
-            <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
-              <Home className="h-5 w-5 text-ink-500 shrink-0" />
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Any type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="villa">Villa</SelectItem>
-                  <SelectItem value="apartment">Apartment</SelectItem>
-                  <SelectItem value="family">Family Home</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Separator orientation="vertical" className="hidden sm:block h-auto" />
-            <div className="flex items-center gap-2 flex-1 px-3 py-2.5">
-              <DollarSign className="h-5 w-5 text-ink-500 shrink-0" />
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Any price" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1-2">$1M - $2M</SelectItem>
-                  <SelectItem value="2-4">$2M - $4M</SelectItem>
-                  <SelectItem value="4+">$4M+</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Button variant="gold" size="default" className="rounded-xl">
-              <Search className="h-4 w-4" />
-              Search
+            <Button asChild variant="gold" size="lg">
+              <a href="#projects">
+                View my work
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </Button>
+            <Button asChild variant="default" size="lg" className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
+              <a href="#contact">
+                <Mail className="h-4 w-4" />
+                Contact me
+              </a>
+            </Button>
+            <div className="flex gap-2 ml-2">
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all hover:bg-gold-400 hover:text-ink-950"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full glass-dark text-white transition-all hover:bg-gold-400 hover:text-ink-950"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+            </div>
           </motion.div>
 
           <motion.div
@@ -118,9 +103,9 @@ export function Hero() {
             className="mt-10 flex flex-wrap gap-8"
           >
             {[
-              { value: '2.5K+', label: 'Properties Sold' },
-              { value: '1.8K+', label: 'Happy Clients' },
-              { value: '15+', label: 'Years Experience' },
+              { value: '4+', label: 'Years Experience' },
+              { value: '300%', label: 'Performance Gain' },
+              { value: '20+', label: 'Technologies' },
             ].map((s) => (
               <div key={s.label}>
                 <div className="font-serif text-3xl font-semibold text-white">{s.value}</div>
@@ -139,28 +124,26 @@ export function Hero() {
           >
             <div className="animate-float">
               <Card className="glass rounded-3xl p-5 shadow-2xl border-0">
-                <div className="relative overflow-hidden rounded-2xl">
-                  <img
-                    src="https://images.pexels.com/photos/8134821/pexels-photo-8134821.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt="Featured property"
-                    className="h-56 w-full object-cover"
-                  />
-                  <Badge variant="gold" className="absolute top-3 left-3">Featured</Badge>
-                  <button className="absolute inset-0 m-auto flex h-14 w-14 items-center justify-center rounded-full glass text-ink-950 transition-transform hover:scale-110">
-                    <Play className="h-5 w-5 ml-0.5" fill="currentColor" />
-                  </button>
-                </div>
-                <div className="mt-4">
-                  <div className="flex items-center gap-1 text-gold-500">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-3.5 w-3.5" fill="currentColor" />
-                    ))}
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ink-950 text-gold-400">
+                    <Cpu className="h-6 w-6" />
                   </div>
-                  <h3 className="mt-2 font-serif text-lg font-semibold text-ink-950">Contemporary Luxury Home</h3>
-                  <p className="text-sm text-ink-500">Beverly Hills, CA</p>
-                  <div className="mt-3 flex items-center justify-between">
-                    <span className="font-serif text-xl font-semibold text-ink-950">$4,250,000</span>
-                    <Badge variant="sage">For Sale</Badge>
+                  <div>
+                    <div className="font-serif text-sm font-semibold text-ink-950">Core Stack</div>
+                    <div className="text-xs text-ink-500">.NET 8 · Angular · React</div>
+                  </div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {['.NET 8', 'C#', 'Microservices', 'Angular', 'React', 'Next.js', 'Docker', 'Azure DevOps', 'PostgreSQL', 'Redis'].map((t) => (
+                    <Badge key={t} variant="outline" className="bg-white/60">
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="mt-4 border-t border-ink-200 pt-4">
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-4 w-4 text-gold-500" fill="currentColor" />
+                    <span className="text-xs font-semibold text-ink-700">Optimized system throughput by 300%</span>
                   </div>
                 </div>
               </Card>
@@ -173,12 +156,12 @@ export function Hero() {
               className="absolute -left-8 top-1/3 glass rounded-2xl p-4 shadow-xl"
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-100 text-sage-600">
-                  <ArrowRight className="h-5 w-5" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold-100 text-gold-600">
+                  <Sparkles className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-ink-950">+24% this year</div>
-                  <div className="text-[10px] text-ink-500">Property value growth</div>
+                  <div className="text-xs font-semibold text-ink-950">Clean Architecture</div>
+                  <div className="text-[10px] text-ink-500">DDD · Microservices</div>
                 </div>
               </div>
             </motion.div>

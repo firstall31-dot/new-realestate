@@ -1,28 +1,19 @@
 import { motion } from 'framer-motion';
-import { Star, Award, ShieldCheck, Gem, Crown, Sparkles } from 'lucide-react';
-
-const partners = [
-  { icon: Star, name: 'Forbes' },
-  { icon: Award, name: 'Architectural Digest' },
-  { icon: ShieldCheck, name: 'Realtor.com' },
-  { icon: Gem, name: 'Luxury Portfolio' },
-  { icon: Crown, name: "Christie's" },
-  { icon: Sparkles, name: "Sotheby's" },
-];
+import { techStack } from '@/data/portfolio';
 
 export function Marquee() {
   return (
     <section className="py-12 border-y border-ink-100 overflow-hidden">
       <div className="relative">
-        <div className="flex animate-marquee gap-16 whitespace-nowrap">
-          {[...partners, ...partners].map((p, i) => (
+        <div className="flex animate-marquee gap-12 whitespace-nowrap">
+          {[...techStack, ...techStack].map((t, i) => (
             <motion.div
               key={i}
               className="flex items-center gap-2.5 text-ink-600"
               whileHover={{ scale: 1.05, color: '#43495d' }}
             >
-              <p.icon className="h-5 w-5" />
-              <span className="font-serif text-lg font-medium">{p.name}</span>
+              <span className="flex h-2 w-2 rounded-full bg-gold-400" />
+              <span className="font-serif text-lg font-medium">{t.name}</span>
             </motion.div>
           ))}
         </div>

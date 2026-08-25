@@ -1,14 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Award, TrendingUp } from 'lucide-react';
+import { Clock, TrendingUp, Wifi, Layers } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { stats } from '@/data/portfolio';
 
-const stats = [
-  { icon: Home, value: 2500, suffix: '+', label: 'Properties Sold' },
-  { icon: Users, value: 1800, suffix: '+', label: 'Happy Clients' },
-  { icon: Award, value: 32, suffix: '', label: 'Awards Won' },
-  { icon: TrendingUp, value: 15, suffix: '+', label: 'Years Experience' },
-];
+const icons = [Clock, TrendingUp, Wifi, Layers];
 
 function useCountUp(target: number, start: boolean, duration = 2000) {
   const [count, setCount] = useState(0);
@@ -29,7 +25,7 @@ function useCountUp(target: number, start: boolean, duration = 2000) {
 }
 
 function StatCard({ icon: Icon, value, suffix, label, start, delay }: {
-  icon: typeof Home;
+  icon: typeof Clock;
   value: number;
   suffix: string;
   label: string;
@@ -76,7 +72,7 @@ export function Stats() {
       <div className="mx-auto max-w-8xl">
         <Card className="glass rounded-3xl shadow-2xl p-8 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-6 border-0">
           {stats.map((s, i) => (
-            <StatCard key={s.label} {...s} start={inView} delay={i * 0.1} />
+            <StatCard key={s.id} icon={icons[i]} value={s.value} suffix={s.suffix} label={s.label} start={inView} delay={i * 0.1} />
           ))}
         </Card>
       </div>

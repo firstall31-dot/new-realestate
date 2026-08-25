@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { testimonials } from '@/data/properties';
+import { testimonials } from '@/data/portfolio';
 import { Reveal } from './Reveal';
 import { Button } from '@/components/ui/button';
 
@@ -25,11 +25,9 @@ export function Testimonials() {
     <section id="reviews" className="py-24 sm:py-32 px-5 sm:px-8 bg-ink-950 overflow-hidden">
       <div className="mx-auto max-w-8xl">
         <Reveal className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-gold-400">Client stories</span>
+          <span className="text-sm font-semibold uppercase tracking-widest text-gold-400">Endorsements</span>
           <h2 className="mt-3 font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-white text-balance">
-            Loved by thousands of
-            <br />
-            happy homeowners
+            What collaborators say
           </h2>
         </Reveal>
 
